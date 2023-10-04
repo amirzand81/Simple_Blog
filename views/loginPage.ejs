@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2 style="text-align: center; color: rgb(110, 0, 0)">
+      Login to your account
+    </h2>
+    <form id="loginForm" action="http://127.0.0.1:3000/login" method="POST">
+      <div class="search-box">
+        <div class="inputs">
+          <b> USERNAME </b>
+          <br />
+          <input
+            name="username"
+            type="text"
+            placeholder=""
+            class="lineedit"
+            required
+            autofocus
+          />
+        </div>
+
+        <div class="inputs">
+          <b> PASSWORD </b>
+          <br />
+          <input
+            name="pass"
+            type="password"
+            placeholder=""
+            class="lineedit"
+            required
+          />
+        </div>
+
+        <h4 style="margin-left: 24px;color: rgb(255, 0, 0);">
+          <%= locals.error %>
+        </h4>
+        <div style="width: 500px; margin-left: 190px; margin-top: 30px">
+          <input
+            type="button"
+            class="butt"
+            name=""
+            value="REGISTER"
+            onClick="window.open('http://127.0.0.1:3000/signup','_self');"
+          />
+          <input type="submit" class="butt" name="" value="LOGIN" />
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

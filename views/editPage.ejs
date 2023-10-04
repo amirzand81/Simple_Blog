@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDIT</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2 style="text-align: center; color: rgb(110, 0, 0)">Edit post to blog</h2>
+    <h3 style="text-align: center; color: rgb(110, 0, 0)">
+      Hello <%= locals.username %>
+    </h3>
+    <form
+      id="loginForm"
+      action="http://127.0.0.1:3000/editing"
+      method="POST"
+      onsubmit="return validate()"
+    >
+      <div class="search-box">
+        <div class="inputs">
+          <b> SUBJECT </b>
+          <br />
+          <input
+            name="subject"
+            type="text"
+            placeholder=""
+            class="lineedit"
+            value="<%= locals.subject %>"
+            autofocus
+          />
+        </div>
+
+        <input type="text" name="id" value="<%= locals.id %>" hidden />
+
+        <div class="inputs">
+          <b> BODY </b>
+          <br />
+          <textarea
+            cols="40"
+            rows="5"
+            name="body"
+            class="lineedit"
+            style="height: 200px; padding-left: 10px;"
+            required
+          >
+<%= locals.body %></textarea
+          >
+        </div>
+        <div style="width: 500px; margin-left: 190px; margin-top: 30px">
+          <input
+            type="button"
+            class="butt"
+            name=""
+            value="BACK"
+            onClick="window.open('http://127.0.0.1:3000/panel','_self');"
+          />
+          <input type="submit" class="butt" name="" value="EDIT" />
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

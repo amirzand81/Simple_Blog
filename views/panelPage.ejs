@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PANEL</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2 style="text-align: center; color: rgb(110, 0, 0)">
+      Admin management panel
+    </h2>
+    <h3 style="text-align: center; color: rgb(110, 0, 0)">
+      Hello <%= locals.username %>
+    </h3>
+    <div class="search-box">
+      <h4 style="margin-left: 24px;color: rgb(10, 206, 0);">
+        <%= locals.result %>
+      </h4>
+      <div style="width: 500px; margin-left: 25px; margin-top: 30px">
+        <form action="http://127.0.0.1:3000/Logout" method="POST">
+          <input
+            type="button"
+            class="butt"
+            name=""
+            value="Add post"
+            onClick="window.open('http://127.0.0.1:3000/add','_self');"
+          />
+          <input
+            type="button"
+            class="butt"
+            name=""
+            value="Main page"
+            onClick="window.open('http://127.0.0.1:3000/','_self');"
+          />
+          <input type="submit" class="butt" name="" value="Logout" />
+        </form>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <% if ( locals.posts.length == 0) { %>
+      <h3 style="color: rgb(125, 67, 0); text-align: center;">
+        There is no post yet.
+      </h3>
+
+      <% } else {for(var i = (locals.posts.length-1); i >= 0 ; i--) { %>
+      <div class="item-box">
+        <div id="row"><%= locals.posts[i].subject%></div>
+        <div id="item-datas" style="color: peru; margin-top: 8px;">
+          <%= locals.posts[i].date%> <%= locals.posts[i].time%>
+        </div>
+        <br />
+        <div id="item-datas" style="word-break: break-all; width: 440px;">
+          <%= locals.posts[i].body%>
+        </div>
+        <br />
+
+        <form id="delForm" action="http://127.0.0.1:3000/delete" method="POST">
+          <input
+            type="text"
+            name="deletedId"
+            value="<%= locals.posts[i].id %>"
+            id="dele"
+            hidden
+          />
+        </form>
+
+        <form action="http://127.0.0.1:3000/edit" method="POST">
+          <input
+            type="text"
+            name="Edit"
+            value="<%= locals.posts[i].id %>"
+            hidden
+          />
+          <div style="margin-left: 250px;">
+            <input type="submit" class="butt-item" name="" value="Edit" />
+            <input
+              type="button"
+              class="butt-item"
+              name=""
+              value="Delete"
+              onclick="del('<%= locals.posts[i].id %>')"
+            />
+          </div>
+        </form>
+      </div>
+      <% }}; %>
+    </div>
+  </body>
+  <script>
+    function del(id) {
+      const response = confirm("Are you sure you want to do that?");
+      if (response) {
+          document.getElementById('dele').value = id;
+          document.getElementById('delForm').submit();
+      }
+    }
+  </script>
+</html>
