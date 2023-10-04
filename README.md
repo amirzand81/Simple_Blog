@@ -1,7 +1,7 @@
 # Simple_Blog
 a simple blog for share posts with Node.js and sqlite
 
-This project is my first experience at backend and my codes are very dirty!
+This project is my first experience at web design and my codes are very dirty!
 
 # Features
 
